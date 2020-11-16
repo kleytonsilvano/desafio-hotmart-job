@@ -2,11 +2,13 @@ package com.hotmart.batch.processor;
 
 import org.springframework.batch.item.ItemProcessor;
 
-public class MarketplaceBatchProcessor implements ItemProcessor<String, String> {
+import com.hotmart.models.db.Category;
+
+public class MarketplaceBatchProcessor implements ItemProcessor<Category, String> {
 
 	@Override
-	public String process(String data) throws Exception {
-		return data.toUpperCase();
+	public String process(Category data) throws Exception {
+		return data.getName();
 	}
 
 }

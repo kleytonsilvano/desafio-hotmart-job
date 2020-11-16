@@ -1,4 +1,4 @@
-package com.hotmart.writer;
+package com.hotmart.batch.writer;
 
 import java.util.List;
 
