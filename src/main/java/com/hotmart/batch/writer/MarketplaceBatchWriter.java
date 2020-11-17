@@ -4,13 +4,17 @@ import java.util.List;
 
 import org.springframework.batch.item.ItemWriter;
 
-public class MarketplaceBatchWriter implements ItemWriter<String> {
+import com.hotmart.models.db.ScoreProduct;
+
+public class MarketplaceBatchWriter implements ItemWriter<ScoreProduct> {
+
 
 	@Override
-	public void write(List<? extends String> messages) throws Exception {
-		for (String msg : messages) {
-			System.out.println("Writing the data " + msg);
-		}
+	public void write(List<? extends ScoreProduct> items) throws Exception {
+		
+		System.out.println("Writing the data " + items.size());
+		System.out.println(items.get(0).getScore());
+		
 	}
 
 }

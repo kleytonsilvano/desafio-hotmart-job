@@ -29,10 +29,15 @@
 			<artifactId>spring-boot-starter-batch</artifactId>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		</dependency>
 		
 		<dependency>
-		   <groupId>org.hsqldb</groupId>
-		   <artifactId>hsqldb</artifactId>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>4.0.0.RELEASE</version>
 		</dependency>
 		
 		<!-- Configuration BD -->
