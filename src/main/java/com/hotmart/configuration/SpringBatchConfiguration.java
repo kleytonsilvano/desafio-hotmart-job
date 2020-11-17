@@ -1,4 +1,4 @@
-package com.hotmart.batch;
+package com.hotmart.configuration;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,14 +28,14 @@ import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.hotmart.batch.writer.MarketplaceBatchWriter;
-import com.hotmart.batch.reader.MarketplaceBatchReader;
-import com.hotmart.batch.steps.MarketplaceBatchProcessor;
+import com.hotmart.batch.BatchJobCompletionListener;
+import com.hotmart.batch.MarketplaceBatchConfig;
+import com.hotmart.batch.MarketplaceQuartzJobBean;
 
 @SuppressWarnings("deprecation")
 @Configuration
 @EnableBatchProcessing
-public class BatchConfig extends DefaultBatchConfigurer {
+public class SpringBatchConfiguration extends DefaultBatchConfigurer {
 	
 	@Autowired
 	private JobLauncher jobLauncher;
@@ -124,22 +124,6 @@ public class BatchConfig extends DefaultBatchConfigurer {
 		return schedulerFactoryBean;
 
 	}
-	
-	@Bean
-	public MarketplaceBatchProcessor getMarketplaceBatchProcessor() {
-		return new MarketplaceBatchProcessor();
-	}
-
-	@Bean
-	public MarketplaceBatchWriter getMarketplaceBatchWriter() {
-		return new MarketplaceBatchWriter();
-	}
-
-	@Bean
-	public MarketplaceBatchReader MarketplaceBatchReader() {
-		return new MarketplaceBatchReader();
-	}
-	
 	
 	@Bean
 	public JobExecutionListener listener() {
