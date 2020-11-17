@@ -1,4 +1,4 @@
-package com.hotmart.models.vo;
+package com.hotmart.models;
 
 import java.io.Serializable;
 

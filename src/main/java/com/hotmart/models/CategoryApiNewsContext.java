@@ -1,4 +1,4 @@
-package com.hotmart.models.vo;
+package com.hotmart.models;
 
 import com.hotmart.models.db.Category;
 
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CategoryApiNewsVO {
+public class CategoryApiNewsContext {
 	
 	private Category category;
 	private Integer amountNewsCategory;

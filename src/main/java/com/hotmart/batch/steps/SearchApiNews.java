@@ -12,11 +12,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.hotmart.models.vo.ApiNewsResponse;
-import com.hotmart.models.vo.CategoryApiNewsVO;
+import com.hotmart.models.ApiNewsResponse;
+import com.hotmart.models.CategoryApiNewsContext;
 import com.hotmart.utils.DateUtils;
 
-public abstract class SearchApiNews implements ItemProcessor<CategoryApiNewsVO, CategoryApiNewsVO> {
+public abstract class SearchApiNews implements ItemProcessor<CategoryApiNewsContext, CategoryApiNewsContext> {
 
 	@Value("${BASE_URL_API_NEWS}")
 	private String urlBase;
