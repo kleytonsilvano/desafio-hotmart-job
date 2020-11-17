@@ -10,6 +10,7 @@ import lombok.Setter;
 public class CategoryApiNewsVO {
 	
 	private Category category;
-	private Integer amountNews;
+	private Integer amountNewsCategory;
+	private Integer amountNewskeyword;
 	
 }

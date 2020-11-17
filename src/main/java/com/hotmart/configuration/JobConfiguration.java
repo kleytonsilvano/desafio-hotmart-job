@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import com.hotmart.batch.reader.MarketplaceBatchReader;
 import com.hotmart.batch.steps.MarketplaceBatchProcessor;
 import com.hotmart.batch.writer.MarketplaceBatchWriter;
+import com.hotmart.utils.DateUtils;
 
 @Configuration
 public class JobConfiguration {
@@ -35,6 +36,11 @@ public class JobConfiguration {
 	    factory.setReadTimeout(3000);
 	    return new RestTemplate(factory);
 	    
+	}
+
+	@Bean
+	public DateUtils getDateUtils() {
+		return new DateUtils();
 	}
 
 }
