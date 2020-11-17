@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import com.hotmart.batch.reader.MarketplaceBatchReader;
 import com.hotmart.batch.steps.MarketplaceBatchProcessor;
 import com.hotmart.batch.writer.MarketplaceBatchWriter;
+import com.hotmart.dao.MarketplaceDAO;
 import com.hotmart.utils.DateUtils;
 
 @Configuration
@@ -41,6 +42,11 @@ public class JobConfiguration {
 	@Bean
 	public DateUtils getDateUtils() {
 		return new DateUtils();
+	}
+
+	@Bean
+	public MarketplaceDAO getMarketplaceDAO() {
+		return new MarketplaceDAO();
 	}
 
 }

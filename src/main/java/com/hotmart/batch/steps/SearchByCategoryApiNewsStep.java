@@ -8,13 +8,13 @@ import com.hotmart.models.db.Category;
 public class SearchByCategoryApiNewsStep extends SearchApiNews {
 
 	@Override
-	public CategoryApiNewsContext process(CategoryApiNewsContext vo) throws Exception {
+	public CategoryApiNewsContext process(CategoryApiNewsContext context) throws Exception {
 		
-		Category category = vo.getCategory();
+		Category category = context.getCategory();
 		ApiNewsResponse response = searchNewsByCategory(JobConstants.API_NEWS_PATH_CATEGORY, category.getName());
-		vo.setAmountNewsCategory(response != null ? response.getTotalResults() : 0);
+		context.setAmountNewsCategory(response != null ? response.getTotalResults() : 0);
 		
-		return vo;
+		return context;
 		
 	}
 
