@@ -13,7 +13,7 @@ public class StatisticsProductVO {
 	private Double averageRating;
 	private Double salesPerDay;
 	private String categories;
-	private Double scoreTotalProduct; //Score total do produto se estiver já cadastrado na tabela score product
-	private Long idScoreProduct; //ID da tabela score product
+	private Double scoreTotalProduct; //Total product score if already registered in the score product table
+	private Long idScoreProduct; //ID table tb_score_product
 
 }
