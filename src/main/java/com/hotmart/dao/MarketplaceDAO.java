@@ -58,5 +58,19 @@ public class MarketplaceDAO {
         				}, categoryId);
 
     }
+	
+	
+	
+	private final String SQL_DELETE_ALL_SCORE_PRODUCT = 
+			new StringBuilder()
+			//PRODUCTS STATISTICS - CALCULATIONS TO SCORE EACH REGISTERED PRODUCT
+			.append(" delete from tb_score_product ")
+			.toString();
+	
+	public void deleteAllScoreProduct() {
+		
+		this.jdbcTemplate.execute(SQL_DELETE_ALL_SCORE_PRODUCT);
+		
+    }
 
 }

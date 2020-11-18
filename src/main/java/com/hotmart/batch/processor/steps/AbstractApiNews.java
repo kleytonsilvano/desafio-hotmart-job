@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.hotmart.models.ApiNewsResponse;
@@ -37,19 +38,14 @@ public abstract class AbstractApiNews implements ItemProcessor<CategoryApiNewsCo
 		
 		try {
 			
-//			ResponseEntity<ApiNewsResponse> result = restTemplate.getForEntity(url, ApiNewsResponse.class);
-//			
-//			if(result.getStatusCode().is2xxSuccessful()
-//					&& result.getBody().getStatus().equalsIgnoreCase("ok")) {
-//				
-//				return result.getBody();
-//				
-//			}
-//			
-			ApiNewsResponse response = new ApiNewsResponse();
-			response.setStatus("ok");
-			response.setTotalResults(50); //TODO 
-			return response;
+			ResponseEntity<ApiNewsResponse> result = restTemplate.getForEntity(url, ApiNewsResponse.class);
+			
+			if(result.getStatusCode().is2xxSuccessful()
+					&& result.getBody().getStatus().equalsIgnoreCase("ok")) {
+				
+				return result.getBody();
+				
+			}
 			
 		}catch(Exception e) {
 			
