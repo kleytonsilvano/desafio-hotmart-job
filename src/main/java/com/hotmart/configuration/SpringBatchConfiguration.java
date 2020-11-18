@@ -12,23 +12,19 @@ import org.springframework.batch.core.configuration.annotation.DefaultBatchConfi
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.support.ApplicationContextFactory;
 import org.springframework.batch.core.configuration.support.GenericApplicationContextFactory;
-import org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor;
 import org.springframework.batch.core.configuration.support.MapJobRegistry;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.NoSuchJobException;
-import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean;
-import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
 
-import com.hotmart.batch.BatchJobCompletionListener;
+import com.hotmart.batch.BatchJobListener;
 import com.hotmart.batch.MarketplaceBatchConfig;
 import com.hotmart.batch.MarketplaceQuartzJobBean;
 
@@ -45,16 +41,6 @@ public class SpringBatchConfiguration extends DefaultBatchConfigurer {
         return new MapJobRegistry();
     }
     
-    @Bean
-    public ResourcelessTransactionManager transactionManager() {
-        return new ResourcelessTransactionManager();
-    }
-    
-    @Bean
-    public PlatformTransactionManager getTransactionManager() {
-        return new ResourcelessTransactionManager();
-    }
-
     @Override
     protected JobRepository createJobRepository() throws Exception {
         MapJobRepositoryFactoryBean factoryBean = new MapJobRepositoryFactoryBean();
@@ -62,22 +48,6 @@ public class SpringBatchConfiguration extends DefaultBatchConfigurer {
         return factoryBean.getObject();
     }
 
-	
-	@Bean
-	 public JobLauncher jobLauncher(JobRepository jobRepository) throws Exception {
-        SimpleJobLauncher simpleJobLauncher = new SimpleJobLauncher();
-        simpleJobLauncher.setJobRepository(jobRepository);
-        simpleJobLauncher.afterPropertiesSet();
-        return simpleJobLauncher;
-    }
-	
-	@Bean
-	public JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor(JobRegistry jobRegistry) {
-		JobRegistryBeanPostProcessor jobRegistryBeanPostProcessor = new JobRegistryBeanPostProcessor();
-		jobRegistryBeanPostProcessor.setJobRegistry(jobRegistry());
-		return jobRegistryBeanPostProcessor;
-	}
-	
 	@Bean(name = "detailContext")
 	 public ApplicationContextFactory getApplicationContext() {
         return new GenericApplicationContextFactory(MarketplaceBatchConfig.class);
@@ -100,7 +70,7 @@ public class SpringBatchConfiguration extends DefaultBatchConfigurer {
 
 		CronTriggerFactoryBean cronTriggerFactoryBean = new CronTriggerFactoryBean();
 		cronTriggerFactoryBean.setJobDetail(jobDetailFactoryBean().getObject());
-		cronTriggerFactoryBean.setCronExpression("0 0/1 * 1/1 * ? *");
+		cronTriggerFactoryBean.setCronExpression("0 0 0/6 1/1 * ? *"); //Every 6 hours
 
 		return cronTriggerFactoryBean;
 
@@ -127,6 +97,6 @@ public class SpringBatchConfiguration extends DefaultBatchConfigurer {
 	
 	@Bean
 	public JobExecutionListener listener() {
-		return new BatchJobCompletionListener();
+		return new BatchJobListener();
 	}
 }

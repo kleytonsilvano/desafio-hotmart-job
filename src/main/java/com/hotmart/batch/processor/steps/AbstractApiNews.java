@@ -1,4 +1,4 @@
-package com.hotmart.batch.steps;
+package com.hotmart.batch.processor.steps;
 
 import static com.hotmart.constants.JobConstants.DATE_FORMAT;
 
@@ -9,14 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.hotmart.models.ApiNewsResponse;
 import com.hotmart.models.CategoryApiNewsContext;
 import com.hotmart.utils.DateUtils;
 
-public abstract class SearchApiNews implements ItemProcessor<CategoryApiNewsContext, CategoryApiNewsContext> {
+public abstract class AbstractApiNews implements ItemProcessor<CategoryApiNewsContext, CategoryApiNewsContext> {
 
 	@Value("${BASE_URL_API_NEWS}")
 	private String urlBase;
@@ -30,7 +29,7 @@ public abstract class SearchApiNews implements ItemProcessor<CategoryApiNewsCont
 	@Autowired
 	private RestTemplate restTemplate;
 
-	private static Logger logger = LoggerFactory.getLogger(SearchApiNews.class);
+	private static Logger logger = LoggerFactory.getLogger(AbstractApiNews.class);
 	
 	public ApiNewsResponse searchNewsByCategory(String path, String category) {
 		
@@ -38,14 +37,19 @@ public abstract class SearchApiNews implements ItemProcessor<CategoryApiNewsCont
 		
 		try {
 			
-			ResponseEntity<ApiNewsResponse> result = restTemplate.getForEntity(url, ApiNewsResponse.class);
-			
-			if(result.getStatusCode().is2xxSuccessful()
-					&& result.getBody().getStatus().equalsIgnoreCase("ok")) {
-				
-				return result.getBody();
-				
-			}
+//			ResponseEntity<ApiNewsResponse> result = restTemplate.getForEntity(url, ApiNewsResponse.class);
+//			
+//			if(result.getStatusCode().is2xxSuccessful()
+//					&& result.getBody().getStatus().equalsIgnoreCase("ok")) {
+//				
+//				return result.getBody();
+//				
+//			}
+//			
+			ApiNewsResponse response = new ApiNewsResponse();
+			response.setStatus("ok");
+			response.setTotalResults(50); //TODO 
+			return response;
 			
 		}catch(Exception e) {
 			
@@ -67,6 +71,7 @@ public abstract class SearchApiNews implements ItemProcessor<CategoryApiNewsCont
 		
 		return String.format(stringBuilder.toString(), 
 					category,
+					apiKey,
 					dateUtils.getDateFormatted(new Date(), DATE_FORMAT), 
 					dateUtils.getDateFormatted(dateUtils.addDaysDate(currentDate, -1), DATE_FORMAT));
 		

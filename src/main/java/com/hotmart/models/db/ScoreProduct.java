@@ -18,18 +18,16 @@ import lombok.Setter;
 @Table(name = "tb_score_product")
 public class ScoreProduct implements Serializable{
 
-	private static final long serialVersionUID = 7154471371618630597L;
+	private static final long serialVersionUID = 71544712225530597L;
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column(name = "product_id")
-    private Long idProduct;
+	@Column(name = "product_id")
+	private Long idProduct;
 
     @Column(precision=10, scale=4)
 	private Double score;
     
-    
-
 }

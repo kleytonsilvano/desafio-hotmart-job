@@ -1,4 +1,4 @@
-package com.hotmart.batch.steps;
+package com.hotmart.batch.processor.steps;
 
 import org.springframework.batch.item.ItemProcessor;
 

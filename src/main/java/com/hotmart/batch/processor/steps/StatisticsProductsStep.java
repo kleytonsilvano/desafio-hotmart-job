@@ -1,4 +1,4 @@
-package com.hotmart.batch.steps;
+package com.hotmart.batch.processor.steps;
 
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class StatisticsProductsStep implements ItemProcessor<CategoryApiNewsCont
 	
 	@Override
 	public CategoryApiNewsContext process(CategoryApiNewsContext context) throws Exception {
-		context.setStatisticsProductVO(dao.findStatistics());
+		context.setStatisticsProducts(dao.findStatistics(context.getCategory().getId()));
 		return context;
 	}
 

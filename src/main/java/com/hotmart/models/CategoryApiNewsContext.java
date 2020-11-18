@@ -1,5 +1,7 @@
 package com.hotmart.models;
 
+import java.util.List;
+
 import com.hotmart.models.db.Category;
 import com.hotmart.models.vo.StatisticsProductVO;
 
@@ -13,6 +15,6 @@ public class CategoryApiNewsContext {
 	private Category category;
 	private Integer amountNewsCategory;
 	private Integer amountNewsKeyword;
-	private StatisticsProductVO statisticsProductVO;
+	private List<StatisticsProductVO> statisticsProducts;
 	
 }

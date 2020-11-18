@@ -70,7 +70,6 @@
 		</dependency>
 		
 		<!-- Lombok to auto generate getter and setter methods  -->
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
