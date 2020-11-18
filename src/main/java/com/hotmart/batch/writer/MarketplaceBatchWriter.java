@@ -18,13 +18,9 @@ public class MarketplaceBatchWriter implements ItemWriter<List<ScoreProduct>> {
 
 		for (List<ScoreProduct> list : items) {
 
-			//All products of category contaning your score
+			//All products of category containing your score
 			if(list.size() > 0) {
 				
-				List<ScoreProduct> findAll = repository.findAll();
-
-				System.out.println("FindALL: " + findAll.size());
-				System.out.println(list.size());
 				repository.saveAll(list);
 				
 			}
