@@ -27,6 +27,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import com.hotmart.batch.BatchJobListener;
 import com.hotmart.batch.MarketplaceBatchConfig;
 import com.hotmart.batch.MarketplaceQuartzJobBean;
+import com.hotmart.constants.JobConstants;
 
 @SuppressWarnings("deprecation")
 @Configuration
@@ -70,7 +71,7 @@ public class SpringBatchConfiguration extends DefaultBatchConfigurer {
 
 		CronTriggerFactoryBean cronTriggerFactoryBean = new CronTriggerFactoryBean();
 		cronTriggerFactoryBean.setJobDetail(jobDetailFactoryBean().getObject());
-		cronTriggerFactoryBean.setCronExpression("0 0 0/6 1/1 * ? *"); //Every 6 hours
+		cronTriggerFactoryBean.setCronExpression(JobConstants.JOB_CRON_SCORE_BATCH);
 
 		return cronTriggerFactoryBean;
 
