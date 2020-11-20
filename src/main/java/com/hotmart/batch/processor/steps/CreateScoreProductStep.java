@@ -50,7 +50,7 @@ public class CreateScoreProductStep implements ItemProcessor<CategoryApiNewsCont
 		total = Double.sum(total, getDoubleValue(context.getAmountNewsKeyword())); //Sum amount news of keyword
 		
 		//If the product has already been registered, do not make this sum
-		if(vo.getIdScoreProduct() == null) {
+		if(vo.getIdScoreProduct() == null || vo.getIdScoreProduct() == 0) {
 			
 			//Average product rating over the past 12 months
 			total = Double.sum(total, getDoubleValue(vo.getAverageRating()));
