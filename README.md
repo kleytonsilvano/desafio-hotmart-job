@@ -1,7 +1,8 @@
 # DESAFIO-HOTMART-JOB
 
 <p> As variáveis necessárias para o projeto estão no arquivo de configurações do spring em: 
-<strong> src/main/resources/application.properties. Só rodar :) </strong>
+<strong> src/main/resources/application.properties. </strong></p>
+<p>Apenas adicionar no Run configurations a API KEY própria para acessar o APINews ( <a> https://newsapi.org/ </a> ), propriedade: <strong>-DAPI_KEY_API_NEWS=TOKEN , após isso só rodar :) </strong>
 </p>
 <p> Necessário configurar o banco de dados, está configurado para utilizar my sql na porta 3306 </p>
 <p> Pode ser utilizado qualquer outro banco compatível com o JPA. Para continuar utilizando o MySQL seguir: </p>
