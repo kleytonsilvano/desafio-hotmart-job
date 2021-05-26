@@ -11,7 +11,7 @@
 	<groupId>com.group</groupId>
 	<artifactId>desafio-news-job</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>desafio-hotmart-job</name>
+	<name>desafio-news-job</name>
 	<description>Project that feeds the product score</description>
 
 	<properties>
