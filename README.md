@@ -1,4 +1,4 @@
-# DESAFIO-HOTMART-JOB
+# NEWS-JOB
 
 <p> As variáveis necessárias para o projeto estão no arquivo de configurações do spring em: 
 <strong> src/main/resources/application.properties. </strong></p>
@@ -18,7 +18,7 @@
 
 <h1>- Funcionamento: </h1>
 <p> Tecnologias: Java8 / Spring / Spring Data / Spring Batch / Apache Quartz</p>
-<p> Foi utilizado o Apache Quartz para realizar o gerenciamento de horários que o job deve rodar ( de 6 em 6 horas, parametrizado no arquivo de constantes <strong>com.hotmart.constants.JobConstants</strong>) </p>
+<p> Foi utilizado o Apache Quartz para realizar o gerenciamento de horários que o job deve rodar ( de 6 em 6 horas, parametrizado no arquivo de constantes <strong>com.news.constants.JobConstants</strong>) </p>
 <p> O job foi criado utilizando como base o framework Spring Batch e Apache Quartz. Basicamente pelo Spring Batch, há configuração do jobRepository, o JobLauncher e do Step que são os pontos básicos para se criar a base do Spring Batch. </p>
 <p> Documentação de referencia do Spring Batch: <a>https://docs.spring.io/spring-batch/docs/current/reference/html/index.html</a></p>
 

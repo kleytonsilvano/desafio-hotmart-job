@@ -1,0 +1,33 @@
+package com.news.batch.writer;
+
+import java.util.List;
+
+import org.springframework.batch.item.ItemWriter;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.news.models.db.ScoreProduct;
+import com.news.repository.ScoreProductRepository;
+
+public class MarketplaceBatchWriter implements ItemWriter<List<ScoreProduct>> {
+
+	@Autowired
+	private ScoreProductRepository repository;
+
+	@Override
+	public void write(List<? extends List<ScoreProduct>> items) throws Exception {
+
+		for (List<ScoreProduct> list : items) {
+
+			//All products of category containing your score
+			if(list.size() > 0) {
+				
+				repository.saveAll(list);
+				
+			}
+			
+
+		}
+
+	}
+
+}
