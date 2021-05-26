@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.group</groupId>
-	<artifactId>desafio-hotmart-job</artifactId>
+	<artifactId>desafio-news-job</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>desafio-hotmart-job</name>
 	<description>Project that feeds the product score</description>

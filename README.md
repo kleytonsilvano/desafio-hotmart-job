@@ -14,7 +14,7 @@
 <p> <strong><i>	> mysqldump -u root -p marketplace > backup.sql </strong></i> </p>
 
 <h1>- Architecture Representation: </h1><br/>
-<img src="documentation/Arch-Hotmart-Job.png" />
+<img src="documentation/Arch-News-Job.png" />
 
 <h1>- Funcionamento: </h1>
 <p> Tecnologias: Java8 / Spring / Spring Data / Spring Batch / Apache Quartz</p>
